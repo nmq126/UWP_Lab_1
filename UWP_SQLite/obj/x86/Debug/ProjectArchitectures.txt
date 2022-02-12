@@ -1,0 +1,1 @@
+C:\Users\PC\source\repos\Lab\UWP_SQLite\UWP_SQLite.csproj;x86

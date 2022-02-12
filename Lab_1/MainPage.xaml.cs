@@ -1,20 +1,8 @@
 ﻿using Lab_1.Utils;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -31,7 +19,7 @@ namespace Lab_1
         }
         private string checkedGender;
         private string checkedCalendarDatePicker;
-        private int validateCheck = 0;
+        private int validateCheck;
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
@@ -49,6 +37,7 @@ namespace Lab_1
             string firstName, string lastName, string password, string confirmPassword, 
             string address, string phone, string avatar, string email, string introduction, string checkedGender, string checkedCalendarDatePicker)
         {
+            validateCheck = 0;
             if (Validator.IsEmpty(firstName))
             {
                 msgFirstName.Text = "First name is required";
@@ -74,16 +63,15 @@ namespace Lab_1
             }
             else
             {
-                msgPhone.Text = "";
-            }
-            if (!Validator.IsPhoneNumber(phone))
-            {
-                msgPhone.Text = "Phone number format is not correct";
-                validateCheck += 1;
-            }
-            else
-            {
-                msgPhone.Text = "";
+                if (!Validator.IsPhoneNumber(phone))
+                {
+                    msgPhone.Text = "Phone number format is not correct";
+                    validateCheck += 1;
+                }
+                else
+                {
+                    msgPhone.Text = "";
+                }
             }
             if (Validator.IsEmpty(email))
             {
@@ -92,17 +80,16 @@ namespace Lab_1
             }
             else
             {
-                msgEmail.Text = "";
+                if (!Validator.IsEmail(email))
+                {
+                    msgEmail.Text = "Email format is not correct";
+                    validateCheck += 1;
+                }
+                else
+                {
+                    msgPhone.Text = "";
+                }
 
-            }
-            if (!Validator.IsEmail(email))
-            {
-                msgEmail.Text = "Email format is not correct";
-                validateCheck += 1;
-            }
-            else
-            {
-                msgPhone.Text = "";
             }
             if (Validator.IsEmpty(avatar))
             {
@@ -122,6 +109,7 @@ namespace Lab_1
             {
                 msgPassword.Text = "";
             }
+            
             if (Validator.IsEmpty(confirmPassword))
             {
                 msgConfirmPassword.Text = "Password confirm is required";
@@ -129,16 +117,15 @@ namespace Lab_1
             }
             else
             {
-                msgConfirmPassword.Text = "";
-            }
-            if (!Validator.MatchString(password, confirmPassword))
-            {
-                msgConfirmPassword.Text = "Password confirm is not match";
-                validateCheck += 1;
-            }
-            else
-            {
-                msgConfirmPassword.Text = "";
+                if (!Validator.MatchString(password, confirmPassword))
+                {
+                    msgConfirmPassword.Text = "Password confirm is not match";
+                    validateCheck += 1;
+                }
+                else
+                {
+                    msgConfirmPassword.Text = "";
+                }
             }
             if (Validator.IsEmpty(address))
             {
@@ -176,12 +163,12 @@ namespace Lab_1
             {
                 msgDob.Text = "";
             }
-            return (validateCheck>0);
+            return validateCheck > 0;
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (ValidateForm(txtFirstName.Text, txtLastName.Text, txtPassword.Password.ToString(), txtConfirmPassword.Password.ToString(),
+            if (!ValidateForm(txtFirstName.Text, txtLastName.Text, txtPassword.Password.ToString(), txtConfirmPassword.Password.ToString(),
                 txtAddress.Text, txtPhone.Text, txtAvatar.Text, txtEmail.Text, txtIntroduction.Text, checkedGender, checkedCalendarDatePicker))
             {
                 var form = new
@@ -198,13 +185,12 @@ namespace Lab_1
                 
                 };
 
-                //var jsonString = JsonConvert.SerializeObject(form);
-                //ContentDialog contentDialog = new ContentDialog();
-                //contentDialog.Title = "Register Information";
-                //contentDialog.Content = jsonString;
-                //contentDialog.CloseButtonText = "Close";
-                //await contentDialog.ShowAsync();
-                Debug.WriteLine(form);
+                var jsonString = JsonConvert.SerializeObject(form);
+                ContentDialog contentDialog = new ContentDialog();
+                contentDialog.Title = "Register Information";
+                contentDialog.Content = jsonString;
+                contentDialog.CloseButtonText = "Close";
+                await contentDialog.ShowAsync();
                 return;
             }
             

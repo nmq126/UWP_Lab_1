@@ -44,3 +44,4 @@ C:\Users\PC\source\repos\Lab\Lab_1\obj\x86\Debug\MultipleQualifiersPerDimensionF
 C:\Users\PC\source\repos\Lab\Lab_1\obj\x86\Debug\ProjectArchitectures.txt
 C:\Users\PC\source\repos\Lab\Lab_1\obj\x86\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_637424563200000000.json
 C:\Users\PC\source\repos\Lab\Lab_1\bin\x86\Debug\Newtonsoft.Json.dll
+C:\Users\PC\source\repos\Lab\Lab_1\bin\x86\Debug\sqlite3.dll
