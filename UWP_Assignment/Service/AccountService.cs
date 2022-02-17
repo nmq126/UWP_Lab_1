@@ -46,12 +46,11 @@ namespace UWP_Assignment.Service
                 {
                     SaveToken(content);
                     Credential obj = JsonConvert.DeserializeObject<Credential>(content);
-                    Debug.WriteLine("token: " + content);
                     return obj;
                 }
                 else
                 {
-                    Debug.WriteLine("Error 500" + content);
+                    Debug.WriteLine("Error: " + content);
                     return null;
                 }
             }
@@ -83,7 +82,6 @@ namespace UWP_Assignment.Service
             }
         }
 
-        //// lấy thông tin tài khoản
         public async Task<Account> GetAccountInformation(string token)
         {
             using (HttpClient httpClient = new HttpClient())
@@ -94,7 +92,7 @@ namespace UWP_Assignment.Service
                 if (result.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     Account account = JsonConvert.DeserializeObject<Account>(content);
-                    //App.accountUser = account;
+                    App.accountUser = account;
                     return account;
                 }
                 else
@@ -108,7 +106,7 @@ namespace UWP_Assignment.Service
         {
             Account account;
             Credential credential = await LoadToken();
-            if (credential == null) // không tồn tại file token
+            if (credential == null)
             {
                 return null;
             }

@@ -23,9 +23,7 @@
                         <Image Grid.Column="0" Source="https://res.cloudinary.com/nmqdec6/image/upload/v1645091274/imageedit_3_9401592931_dd0lfy.png" Margin="50 0 -10 0"/>
                         <TextBlock Grid.Column="1" Text="Krypto9" FontWeight="Bold" FontSize="30" VerticalAlignment="Center" Margin="20 0 0 0"/>
                     </Grid>
-                    
                 </NavigationViewItem>
-
                 <NavigationViewItemSeparator/>
                 <NavigationViewItem Content="Thông tin tài khoản" Icon="ContactPresence" Foreground="LightGray" Tag="Information" />
                 <NavigationViewItem Content="Danh sách bài hát" Icon="List" Foreground="LightGray" Tag="ListSong" />

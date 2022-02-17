@@ -20,7 +20,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Text="{x:Bind name}" HorizontalTextAlignment="Left" TextTrimming="CharacterEllipsis"></TextBlock>
-                    <TextBlock Grid.Row="1" Text="{x:Bind author}" HorizontalTextAlignment="Left" TextTrimming="CharacterEllipsis" Foreground="Gray" FontSize="12"></TextBlock>
+                    <TextBlock Grid.Row="1" Text="{x:Bind singer}" HorizontalTextAlignment="Left" TextTrimming="CharacterEllipsis" Foreground="Gray" FontSize="12"></TextBlock>
 
                 </Grid>
 

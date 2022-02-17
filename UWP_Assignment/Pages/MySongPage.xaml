@@ -20,7 +20,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Text="{x:Bind name}" HorizontalTextAlignment="Left" TextTrimming="CharacterEllipsis"></TextBlock>
-                    <TextBlock Grid.Row="1" Text="{x:Bind author}" HorizontalTextAlignment="Left" TextTrimming="CharacterEllipsis" Foreground="Gray" FontSize="12"></TextBlock>
+                    <TextBlock Grid.Row="1" Text="{x:Bind singer}" HorizontalTextAlignment="Left" TextTrimming="CharacterEllipsis" Foreground="Gray" FontSize="12"></TextBlock>
 
                 </Grid>
 
@@ -37,7 +37,7 @@
             <RowDefinition Height="70*"/>
             <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Bài hát của tôi" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="SemiBold"/>
+        <TextBlock Grid.Row="0" Text="Bài hát của bạn" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="SemiBold"/>
         <GridView x:Name="MyListSong"
                   ItemTemplate="{StaticResource SongTemplate}"
                   IsItemClickEnabled="True"
@@ -48,6 +48,11 @@
                   Grid.Row="1" Margin="70 0 0 0"/>
         <Grid Grid.Row="1">
             <Image x:Name="loadingGif" Source="/Assets/loading-unscreen.gif" Height="200"/>
+            <Grid x:Name="noSong" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock HorizontalAlignment="Center" Text="Bạn chưa tạo bài hát nào." FontSize="20"/>
+                <TextBlock Text="Nhấn vào đây để tạo bài hát mới." TextDecorations="Underline" Margin="0 30 0 0" FontSize="24" PointerPressed="TextBlock_PointerPressed"/>
+            </Grid>
+            
         </Grid>
         <Grid Grid.Row="2" >
             <Grid.Background>

@@ -33,7 +33,6 @@
             <SolidColorBrush x:Key="NavigationViewItemForegroundPressed" Color="White"/>
             <SolidColorBrush x:Key="NavigationViewItemForegroundSelectedPressed" Color="White"/>-->
             
-            
         </ResourceDictionary>
     </Application.Resources>
 </Application>
