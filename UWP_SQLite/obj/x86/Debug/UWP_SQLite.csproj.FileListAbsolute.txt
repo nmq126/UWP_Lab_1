@@ -65,3 +65,9 @@ C:\Users\PC\source\repos\Lab\UWP_SQLite\obj\x86\Debug\Pages\ShowListTransactionP
 C:\Users\PC\source\repos\Lab\UWP_SQLite\obj\x86\Debug\Pages\ShowListTransactionPage.xaml
 C:\Users\PC\source\repos\Lab\UWP_SQLite\obj\x86\Debug\Pages\ShowListTransactionPage.xbf
 C:\Users\PC\source\repos\Lab\UWP_SQLite\bin\x86\Debug\Pages\ShowListTransactionPage.xbf
+C:\Users\PC\source\repos\Lab\UWP_SQLite\bin\x86\Debug\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.xr.xml
+C:\Users\PC\source\repos\Lab\UWP_SQLite\bin\x86\Debug\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.dll
+C:\Users\PC\source\repos\Lab\UWP_SQLite\bin\x86\Debug\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.pdb
+C:\Users\PC\source\repos\Lab\UWP_SQLite\obj\x86\Debug\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.pri.xml
+C:\Users\PC\source\repos\Lab\UWP_SQLite\obj\x86\Debug\Microsoft.UI.Xaml.pri.xml
+C:\Users\PC\source\repos\Lab\UWP_SQLite\obj\x86\Debug\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid\en-US\Microsoft.Toolkit.Uwp.UI.Controls.Resources.resw

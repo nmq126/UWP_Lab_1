@@ -24,9 +24,32 @@ namespace UWP_SQLite
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public static Frame frame;
         public MainPage()
         {
             this.InitializeComponent();
+            this.Loaded += Navigation_Loaded;
+            frame = contentFrame;
         }
+
+        public void Navigation_Loaded(object sender, RoutedEventArgs e)
+        {
+            contentFrame.Navigate(typeof(Pages.CreateTransactionPage));
+        }
+
+        private void nvSample_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+            NavigationViewItemBase item = args.InvokedItemContainer;
+            switch (item.Tag)
+            {
+                case "CreateTransaction":
+                    _ = contentFrame.Navigate(typeof(Pages.CreateTransactionPage));
+                    break;
+                case "ShowTransaction":
+                    _ = contentFrame.Navigate(typeof(Pages.ShowListTransactionPage));
+                    break;
             }
+        }
+    }
 }
+

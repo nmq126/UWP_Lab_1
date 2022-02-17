@@ -1,0 +1,119 @@
+﻿<Page
+    x:Class="UWP_Assignment.Pages.CreateSongPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWP_Assignment.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
+        </Grid.Resources>
+        <!--<Grid.Background>
+            <ImageBrush Stretch="UniformToFill"
+                        ImageSource="https://res.cloudinary.com/nmqdec6/image/upload/v1645027309/wp3508241_fzaw2y.jpg"/>
+        </Grid.Background>-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="15*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1" Canvas.ZIndex="100" Visibility="Collapsed">
+            <Image x:Name="loadingGif" Source="/Assets/loading-unscreen.gif" Height="200"/>
+        </Grid>
+        <ScrollViewer  Grid.Column="1" VerticalScrollBarVisibility="Hidden">
+            <Grid Margin="0 50 0 50">
+                <Grid.Background>
+                    <SolidColorBrush>#121212</SolidColorBrush>
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0"  Margin="0,25,0,20" >
+                    <TextBlock Text="Tạo bài hát mới" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                </Grid>
+
+                <Grid Grid.Row="1" Grid.Column="1" Margin="0,0,0,20">
+
+                    <TextBox CornerRadius="15" BorderBrush="{StaticResource MainColor}" Header="Tên bài hát :" x:Name="txtName" HorizontalAlignment="Center" Width="500" />
+                    <TextBlock x:Name="msgName"  Text="" Foreground="Red" FontSize="12" Width="500" Margin="200,66,269,-22"/>
+                </Grid>
+                <!--<Grid Grid.Row="2" Grid.Column="1" Margin="0,0,0,20">
+                    <TextBox CornerRadius="15" BorderBrush="{StaticResource MainColor}"  Header="Mô tả :" x:Name="txtDescription" HorizontalAlignment="Center" Width="500" />
+                    <TextBlock x:Name="msgDescription"  Text="" Foreground="Red" FontSize="12" Margin="200,66,269,-22"/>
+                </Grid>-->
+                <Grid Grid.Row="3" Grid.Column="1" Margin="0,0,0,20">
+                    <TextBox CornerRadius="15" BorderBrush="{StaticResource MainColor}" Header="Ca sĩ :" x:Name="txtSinger" HorizontalAlignment="Center" Width="500" />
+                    <TextBlock x:Name="msgSinger"  Text="" Foreground="Red" FontSize="12" Margin="200,66,269,-22"/>
+                </Grid>
+                <Grid Grid.Row="4" Grid.Column="1" Margin="0,0,0,20">
+                    <TextBox CornerRadius="15" BorderBrush="{StaticResource MainColor}"  Header="Tác giả :" x:Name="txtAuthor" HorizontalAlignment="Center" Width="500" />
+                    <TextBlock x:Name="msgAuthor"  Text="" Foreground="Red" FontSize="12" Margin="200,66,269,-22"/>
+                </Grid>
+
+                <Grid Grid.Row="5" Grid.Column="1" Margin="0,0,0,0" Width="500">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txtThumbnail"  Visibility="Collapsed" />
+                        <TextBlock Grid.Row="0" Margin="0,0,0,5" Text="Thumbnail: "/>
+                        <Border CornerRadius="15" Grid.Row="1" Height="150" Width="150" HorizontalAlignment="Left" BorderBrush="{StaticResource MainColor}" BorderThickness="1" Margin="0 0 0 5">
+                            <Image x:Name="imgThumbnail" Source="https://res.cloudinary.com/nmqdec6/image/upload/v1645081876/2223_i1om7r.jpg" />
+                        </Border>
+                        <Button Grid.Row="2" x:Name="btnUpload"  Background="White" Foreground="Black" Content="Tải ảnh" Margin="0 0 0 10" Click="Button_Upload"/>
+                        <Button Grid.Row="2" x:Name="btnDelete" Background="White" Foreground="Black" Content="Xóa ảnh" Margin="0 0 0 10" Click="Button_Delete" Visibility="Collapsed"/>
+                        <TextBlock Grid.Row="2" x:Name="msgThumbnail"  Height="20" Text="" Foreground="Red" FontSize="12" Margin="70,8,-71,15"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <TextBox CornerRadius="15" BorderBrush="{StaticResource MainColor}" x:Name="txtDescription" Header="Mô tả:" Margin="0,0,0,82" />
+                        <TextBlock x:Name="msgDescription"  Text="" Foreground="Red" FontSize="12" Margin="39,187,-39,51" />
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="6" Grid.Column="1" Margin="0,0,0,20">
+                    <TextBox CornerRadius="15" BorderBrush="{StaticResource MainColor}" Header="Link bài hát :" x:Name="txtLink" HorizontalAlignment="Center" Width="500" />
+                    <TextBlock x:Name="msgLink" Text="" Foreground="Red" FontSize="12" Margin="200,66,269,-22"/>
+                </Grid>
+                <Grid Grid.Row="7" Grid.Column="1" Margin="0 20 0 50" >
+                    <Button Grid.Column="0" Grid.Row="0"
+                    Background="{StaticResource MainColor}"
+                    Content="Tạo bài hát" 
+                    CornerRadius="15"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="200"
+                    Height="35"
+                    Click="Button_CreateSong" />
+
+                </Grid>
+            </Grid>
+
+        </ScrollViewer>
+
+    </Grid>
+</Page>

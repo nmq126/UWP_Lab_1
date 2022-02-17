@@ -5,11 +5,138 @@
     xmlns:local="using:UWP_SQLite.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:custom="using:Microsoft.Toolkit.Uwp.UI.Controls" xmlns:entity="using:UWP_SQLite.Entity"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <StackPanel Name="List"></StackPanel>
-        
+    <Grid Margin="0,20,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="searchName" Grid.Row="0" Grid.Column="0" Width="300" Height="60" Header="Name:" HorizontalAlignment="Center"/>
+        <DropDownButton x:Name="searchCategory" HorizontalAlignment="Center" VerticalAlignment="Top"  Width="300" Grid.Row="1" Grid.Column="0" Height="37" Margin="0,23,0,0">
+            <DropDownButton.Flyout>
+                <Flyout Placement="Bottom">
+                    <ListView x:Name="listCategoryData" SelectionChanged="listViewCategory_SelectionChanged">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="entity:Category">
+                                <TextBlock Text="{x:Bind Name}" Tag="{x:Bind Id}" Width="280"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Flyout>
+            </DropDownButton.Flyout>
+        </DropDownButton>
+        <DatePicker x:Name="start"  Grid.Row="0" Grid.Column="1" DayFormat="{}{day.integer}" MonthFormat="{}{month.integer}" YearFormat="{}{year.abbreviated}" Width="300" Height="60" Header="Start:" HorizontalAlignment="Center"  />
+        <DatePicker  x:Name="end" Grid.Row="0" Grid.Column="2" DayFormat="{}{day.integer}" MonthFormat="{}{month.integer}" YearFormat="{}{year.abbreviated}" Width="300" Height="60" Header="End:" HorizontalAlignment="Center" />
+        <Button Grid.Row="1" Grid.Column="2" Width="62" Height="37" Content="Search"  RenderTransformOrigin="1.046,0.515" Margin="147,23,0,0" VerticalAlignment="Top"/>
+        <Button Grid.Row="1" Grid.Column="2" Width="62" Height="37" Content="Reset"  RenderTransformOrigin="1.046,0.515" Margin="225,23,0,0" VerticalAlignment="Top"/>
+
+        <StackPanel HorizontalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="8" Width="959">
+            <custom:DataGrid  IsReadOnly="True"
+                             ItemsSource="{x:Bind Path=transactions, Mode=OneWay}" 
+                             x:Name="DataGridView" AutoGenerateColumns="False" 
+                             Height="343" Width="Auto" Margin="10,30,10,10"
+                             AreRowDetailsFrozen="True"
+                                Background="White"
+                                CanUserReorderColumns="False"
+                                CanUserResizeColumns="True"
+                                CanUserSortColumns="True"
+                                GridLinesVisibility="All"
+                                HeadersVisibility="Column"
+                                SelectionMode="Single">
+                <custom:DataGrid.Columns>
+                    <custom:DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                    <custom:DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                    <custom:DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
+                    <custom:DataGridTextColumn Header="Money" Binding="{Binding Amount}"/>
+                    <custom:DataGridTextColumn Header="Created Date" Binding="{Binding CreatedAt}"/>
+                    <custom:DataGridTextColumn Header="Category" Binding="{Binding Category}"/>
+                    <custom:DataGridTemplateColumn Header="Detail">
+                        <custom:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Show" Click="Show" Tag="{Binding Id}" Width="100" Margin="5,5,5,5" Foreground="White" Background="Green"/>
+                            </DataTemplate>
+                        </custom:DataGridTemplateColumn.CellTemplate>
+                    </custom:DataGridTemplateColumn>
+                </custom:DataGrid.Columns>
+            </custom:DataGrid>
+            <StackPanel HorizontalAlignment="Right" Margin="0,10,30,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Total: " FontWeight="Bold" FontSize="20" Foreground="Red"/>
+                    <TextBlock Text="" FontSize="20" Foreground="Red" x:Name="TotalAmount"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+
+
+
     </Grid>
+    <!--<Grid>
+        <StackPanel HorizontalAlignment="Center">
+            
+            <StackPanel HorizontalAlignment="Center" Margin="0,10,0,0">
+                <TextBlock Text="Search Filter:" FontSize="30"></TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <StackPanel>
+                        <TextBlock Text="Start Date:" FontSize="20"/>
+                        <CalendarDatePicker Name="StartDate" Width="200"/>
+                        <TextBlock Text="" Foreground="Red" FontSize="15" Name="StartDateError"/>
+                    </StackPanel>
+                    <StackPanel Margin="40,0,0,0">
+                        <TextBlock Text="End Date:" FontSize="20"/>
+                        <CalendarDatePicker Name="EndDate" Width="200"/>
+                        <TextBlock Text="" Foreground="Red" FontSize="15" Name="EndDateError"/>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Center" Margin="40,7,0,1">
+                        <Button Content="Search" FontSize="14" Width="100" Foreground="White" Background="Blue" Click="Search" CornerRadius="5"></Button>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <TextBlock Text="List Transaction" HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="40" FontWeight="Bold"/>
+            <custom:DataGrid IsReadOnly="True"
+                             ItemsSource="{x:Bind Path=transactions, Mode=OneWay}" 
+                             x:Name="DataGridView" AutoGenerateColumns="False" 
+                             Height="343" Width="Auto" Margin="0,20,0,0"
+                             AreRowDetailsFrozen="True"
+                                Background="White"
+                                CanUserReorderColumns="False"
+                                CanUserResizeColumns="True"
+                                CanUserSortColumns="True"
+                                GridLinesVisibility="All"
+                                HeadersVisibility="Column"
+                                SelectionMode="Single">
+                <custom:DataGrid.Columns>
+                    <custom:DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                    <custom:DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                    <custom:DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
+                    <custom:DataGridTextColumn Header="Money" Binding="{Binding Amount}"/>
+                    <custom:DataGridTextColumn Header="Created Date" Binding="{Binding CreatedAt}"/>
+                    <custom:DataGridTextColumn Header="Category" Binding="{Binding Category}"/>
+                    <custom:DataGridTemplateColumn Header="Detail">
+                        <custom:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Show" Click="Show" Tag="{Binding Id}" Width="100" Margin="5,5,5,5" Foreground="White" Background="AliceBlue"/>
+                            </DataTemplate>
+                        </custom:DataGridTemplateColumn.CellTemplate>
+                    </custom:DataGridTemplateColumn>
+                </custom:DataGrid.Columns>
+            </custom:DataGrid>
+            <StackPanel HorizontalAlignment="Right" Margin="0,10,30,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Total expenditure:" FontWeight="Bold" FontSize="30" Foreground="Red"/>
+                    <TextBlock Margin="10,0,0,0" Text="" FontSize="30" Foreground="Red" Name="TotalExpenditure"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>-->
 </Page>

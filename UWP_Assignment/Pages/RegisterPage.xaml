@@ -1,0 +1,185 @@
+﻿<Page
+    x:Class="UWP_Assignment.Pages.RegisterPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWP_Assignment.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <ScrollViewer>
+            <Grid>
+                <Grid.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="White"/>
+                    </Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Foreground" Value="White"/>
+                    </Style>
+                </Grid.Resources>
+                <Grid.Background>
+                    <ImageBrush Stretch="UniformToFill"
+                        ImageSource="https://res.cloudinary.com/nmqdec6/image/upload/v1645027309/wp3508241_fzaw2y.jpg"/>
+                </Grid.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="500"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Grid.Column="1" Margin="0,25,0,20">
+                    <TextBlock Text="Đăng ký" FontSize="24" HorizontalAlignment="Center" FontWeight="SemiBold"/>
+                </Grid>
+
+                <Grid Grid.Row="1" Grid.Column="1" Margin="0,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <TextBox CornerRadius="15" BorderBrush="White"  Header="Họ:" x:Name="txtFirstName" HorizontalAlignment="Left" Width="225" />
+                        <TextBlock x:Name="msgFirstName" Text="" Foreground="Red" FontSize="12" Margin="0,56,-1,-17"/>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <TextBox CornerRadius="15" BorderBrush="White" Header="Tên:" x:Name="txtLastName" HorizontalAlignment="Right" Width="225" />
+                        <TextBlock x:Name="msgLastName" Text="" Foreground="Red" FontSize="12" Padding="22,0,0,0" Margin="0,55,-1,-17"/>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="2" Grid.Column="1" Margin="0,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <TextBox CornerRadius="15" BorderBrush="White" Header="Email:" x:Name="txtEmail" HorizontalAlignment="Left" Width="225"/>
+                        <TextBlock x:Name="msgEmail"  Text="" Foreground="Red" FontSize="12" Margin="0,55,4,-15"/>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <TextBox CornerRadius="15" BorderBrush="White"  Header="Số điện thoại:" x:Name="txtPhone" HorizontalAlignment="Right" Width="225" />
+                        <TextBlock x:Name="msgPhone" Text="" Foreground="Red" FontSize="12" Padding="22,0,0,0" Margin="0,55,-1,-29"/>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="3" Grid.Column="1" Margin="0,0,0,20">
+                    <TextBox CornerRadius="15" BorderBrush="White"  Header="Địa chỉ:" x:Name="txtAddress" HorizontalAlignment="Center" Width="500" />
+                    <TextBlock x:Name="msgAddress"  Text="" Foreground="Red" FontSize="12" Margin="0,61,0,-17"/>
+                </Grid>
+
+                <Grid Grid.Row="4" Grid.Column="1" Margin="0,0,0,25">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <PasswordBox CornerRadius="15" BorderBrush="White" Header="Mật khẩu:" x:Name="txtPassword" HorizontalAlignment="Left" Width="225" />
+                        <TextBlock x:Name="msgPassword"  Text="" Foreground="Red" FontSize="12" Margin="0,56,-1,-17"/>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <PasswordBox CornerRadius="15" BorderBrush="White" Header="Xác nhận mật khẩu:" x:Name="txtConfirmPassword" HorizontalAlignment="Right" Width="225" />
+                        <TextBlock x:Name="msgConfirmPassword" Text="" Foreground="Red" FontSize="12" Padding="22,0,0,0" Margin="0,56,-1,-17"/>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="5" Grid.Column="1" Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Giới tính:" Margin="0,0,0,5"/>
+                    <RadioButton Grid.Column="0" Grid.Row="1" Content="Nam" Foreground="White" Margin="0,0,46,0" VerticalAlignment="Top" GroupName="gender" Checked="RadioButton_Checked" />
+                    <RadioButton Grid.Column="1" Grid.Row="1" Content="Nữ" Foreground="White" Margin="0 0 0 10" VerticalAlignment="Top" GroupName="gender" Checked="RadioButton_Checked"/>
+                    <RadioButton Grid.Column="2" Grid.Row="1" Content="Khác" Foreground="White" Margin="0 0 0 10" VerticalAlignment="Top" GroupName="gender" Checked="RadioButton_Checked"/>
+                    <TextBlock Grid.Column="0" Grid.Row="2" x:Name="msgGender" Text="" Foreground="Red" FontSize="12" Grid.ColumnSpan="2" />
+                </Grid>
+                <Grid Grid.Row="6" Grid.Column="1" Margin="0,0,0,10">
+                    <CalendarDatePicker CornerRadius="15" BorderBrush="White" x:Name="dob" PlaceholderText="Chọn ngày sinh" DateFormat="{}{day.integer}-{month.integer}-{year.full}" Margin="0 0 0 10" Width="500" Header="Ngày sinh:" DateChanged="Dob_DateChanged" />
+                    <TextBlock x:Name="msgDob" Text="" Foreground="Red" FontSize="12" Margin="0,61,0,-32"/>
+                </Grid>
+                <Grid Grid.Row="7" Grid.Column="1" Margin="0,20,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="txtAvatar"  Visibility="Collapsed" />
+                        <TextBlock Grid.Row="0" Text="Ảnh đại diện"/>
+                        <Border CornerRadius="15" BorderBrush="White" Margin="0 7 0 10" Grid.Row="1" Height="150" Width="150" HorizontalAlignment="Left" BorderThickness="1">
+                            <Image x:Name="imgAvatar" />
+                        </Border>
+                        <Button Grid.Row="2" x:Name="btnUpload"  Content="Tải ảnh" Margin="0 0 0 10" Click="btnUpload_Click" />
+                        <Button Grid.Row="2" x:Name="btnDelete"  Content="Xóa ảnh" Margin="0 0 0 10"  Visibility="Collapsed" Click="btnDelete_Click"/>
+                        <TextBlock Grid.Row="3" x:Name="msgAvatar" Margin="0 0 0 10" Text=""   Foreground="Red" FontSize="12"/>
+                    </Grid>
+                    <TextBox CornerRadius="15" BorderBrush="White" x:Name="txtIntroduction" Header="Giới thiệu bản thân:" Grid.ColumnSpan="2" Margin="166,0,0,78"  />
+                </Grid>
+                <Grid Grid.Row="8" Grid.Column="1" Margin="0,-25,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Button Grid.Column="0" Grid.Row="0"
+                    Background="{StaticResource MainColor}"
+                    Content="Đăng ký" 
+                    CornerRadius="15"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="200"
+                    Height="35"
+                    Click="Register_ClickAsync" />
+                    <Grid Grid.Row="1" Grid.Column="0" Margin="0,20,0,20">
+                        <Grid  >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" TextAlignment="Right" VerticalAlignment="Center" Text="Đã có tài khoản?" Foreground="LightGray" FontSize="14" Margin="0 0 10 0"/>
+                            <TextBlock Grid.Column="1" TextAlignment="Left" VerticalAlignment="Center"  Text="Bấm vào để đăng nhập" TextDecorations="Underline" FontSize="14" PointerPressed="Login_PointerPressed"/>
+
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

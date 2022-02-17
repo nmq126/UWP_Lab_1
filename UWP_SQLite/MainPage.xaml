@@ -9,6 +9,12 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        
+        <NavigationView x:Name="nvSample" ItemInvoked="nvSample_ItemInvoked">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="Add" Content="Create Transaction" Tag="CreateTransaction" />
+                <NavigationViewItem Icon="Save" Content="Transaction List" Tag="ShowTransaction" />
+            </NavigationView.MenuItems>
+            <Frame x:Name="contentFrame"/>
+        </NavigationView>
     </Grid>
 </Page>

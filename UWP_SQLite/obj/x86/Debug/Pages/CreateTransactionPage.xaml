@@ -4,25 +4,45 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:UWP_SQLite.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:entity1="using:UWP_SQLite.Entity"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
         <TextBox x:ConnectionId='2' x:Name="txtName" HorizontalAlignment="Left" Margin="255,147,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="490"/>
-        <TextBlock HorizontalAlignment="Left" Margin="99,151,0,0" Text="Name" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="132,155,0,0" Text="Name" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox x:ConnectionId='3' x:Name="txtDescription" HorizontalAlignment="Left" Margin="255,206,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="490"/>
         <TextBlock HorizontalAlignment="Left" Margin="99,210,0,0" Text="Description" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:ConnectionId='4' x:Name="txtDetail" HorizontalAlignment="Left" Margin="255,273,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="490"/>
-        <TextBlock HorizontalAlignment="Left" Margin="99,277,0,0" Text="Detail" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:ConnectionId='5' x:Name="txtAmount" HorizontalAlignment="Left" Margin="255,334,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="490"/>
-        <TextBlock HorizontalAlignment="Left" Margin="99,338,0,0" Text="Amount" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="100,398,0,0" Text="Date" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:ConnectionId='6' x:Name="txtCategory" HorizontalAlignment="Left" Margin="256,461,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="490"/>
-        <TextBlock HorizontalAlignment="Left" Margin="100,465,0,0" Text="Category" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <!--<DatePicker SelectedDateChanged="CheckDate" DayFormat="{}{day.integer}" MonthFormat="{}{month.integer}" YearFormat="{}{year.abbreviated}" Name="Date" Margin="256,395,0,0" VerticalAlignment="Top" Width="248"/>-->
-        <CalendarDatePicker x:ConnectionId='7' Margin="256,395,0,0" VerticalAlignment="Top" Width="490" DateFormat="{}{day.integer}-{month.integer}-{year.full}"                                             />
-        <Button x:ConnectionId='8' Content="Submit" Margin="0,529,0,0" VerticalAlignment="Top" Width="262"                HorizontalAlignment="Center"/>
+        <TextBox x:ConnectionId='4' x:Name="txtDetail" HorizontalAlignment="Left" Margin="255,267,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="490"/>
+        <TextBlock HorizontalAlignment="Left" Margin="133,273,0,0" Text="Detail" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:ConnectionId='5' x:Name="txtAmount" HorizontalAlignment="Left" Margin="255,327,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="490"/>
+        <TextBlock HorizontalAlignment="Left" Margin="118,341,0,0" Text="Amount" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="103,405,0,0" Text="Created At" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <!--<TextBox x:Name="txtCategory" HorizontalAlignment="Left" Margin="256,461,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="490"/>-->
+        <TextBlock HorizontalAlignment="Left" Margin="113,467,0,0" Text="Category" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <DropDownButton x:ConnectionId='6' x:Name="category" Margin="255,0,0,0" Width="490" FontSize="16">
+            <DropDownButton.Flyout>
+                <Flyout Placement="Bottom">
+                    <ListView x:ConnectionId='16' x:Name="listViewCategory"                                                     >
+                        <ListView.ItemTemplate>
+                            <DataTemplate                               >
+                                <TextBlock x:ConnectionId='18'                                       />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Flyout>
+            </DropDownButton.Flyout>
+        </DropDownButton>
+        <CalendarDatePicker x:ConnectionId='7' x:Name="Date" Margin="255,394,0,0" VerticalAlignment="Top" Width="490" DateFormat="{}{day.integer}-{month.integer}-{year.full}" />
+        <Button x:ConnectionId='8' Content="Submit" Margin="255,535,0,0" VerticalAlignment="Top" Width="202"               />
+        <TextBlock x:ConnectionId='9' x:Name="msgName" HorizontalAlignment="Left" Margin="763,153,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="235" FontSize="16" Foreground="#FFFC0303" />
+        <TextBlock x:ConnectionId='10' x:Name="msgDescription" HorizontalAlignment="Left" Margin="763,209,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="235" FontSize="16" Foreground="#FFFC0303" />
+        <TextBlock x:ConnectionId='11' x:Name="msgDetail" HorizontalAlignment="Left" Margin="763,272,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="235" FontSize="16" Foreground="#FFFC0303" />
+        <TextBlock x:ConnectionId='12' x:Name="msgAmount" HorizontalAlignment="Left" Margin="763,333,0,0"   TextWrapping="Wrap" VerticalAlignment="Top" Width="235" FontSize="16" Foreground="#FFFC0303"/>
+        <TextBlock x:ConnectionId='13' x:Name="msgCreatedAt" HorizontalAlignment="Left" Margin="763,399,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="235" FontSize="16" Foreground="#FFFC0303" />
+        <TextBlock x:ConnectionId='14' x:Name="msgCategory" HorizontalAlignment="Left" Margin="763,466,0,0"   TextWrapping="Wrap" VerticalAlignment="Top" Width="235" FontSize="16" Foreground="#FFFC0303" />
+        <Button x:ConnectionId='15' Content="Reset" Margin="543,535,0,0" VerticalAlignment="Top" Width="202"              />
+
     </Grid>
 </Page>
 
